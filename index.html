@@ -4,12 +4,608 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KDC India</title>
+    <title>KDC PVT LTD | Naturopathy & Wellness Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9f0',
+                            100: '#dcf2dc',
+                            500: '#4caf50',
+                            600: '#43a047',
+                            700: '#388e3c',
+                            800: '#2e7d32',
+                            900: '#1b5e20',
+                        },
+                        secondary: {
+                            50: '#fff8e1',
+                            500: '#ffc107',
+                            600: '#ffb300',
+                            700: '#ffa000',
+                        }
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .cta-bg {
+            background: linear-gradient(rgba(76, 175, 80, 0.9), rgba(76, 175, 80, 0.9)), url('https://images.unsplash.com/photo-1543362906-acfc16c67564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #4caf50;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 
-<body>
-    <h1>KDC PVT LTD</h1>
+<body class="font-sans text-gray-700 bg-gray-50">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4">
+            <nav class="flex justify-between items-center py-4">
+                <a href="#" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-full bg-primary-500 flex items-center justify-center">
+                        <i class="fas fa-leaf text-white text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-primary-800 font-serif">KDC PVT LTD</span>
+                </a>
 
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 font-medium hover:text-primary-600">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 font-medium hover:text-primary-600">About</a>
+                    <a href="#services" class="nav-link text-gray-700 font-medium hover:text-primary-600">Services</a>
+                    <a href="#products" class="nav-link text-gray-700 font-medium hover:text-primary-600">Products</a>
+                    <a href="#testimonials"
+                        class="nav-link text-gray-700 font-medium hover:text-primary-600">Testimonials</a>
+                    <a href="#contact" class="nav-link text-gray-700 font-medium hover:text-primary-600">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <a href="https://mdabdulkaiyum.com" target="_blank"
+                        class="hidden md:inline-block bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-full font-medium transition duration-300">Book
+                        Treatment</a>
+                    <a href="https://peacehoney.in" target="_blank"
+                        class="hidden md:inline-block bg-secondary-500 hover:bg-secondary-600 text-white px-4 py-2 rounded-full font-medium transition duration-300">Shop
+                        Products</a>
+                    <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white py-4 px-4 shadow-lg hidden">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-gray-700 font-medium hover:text-primary-600 py-2">Home</a>
+                <a href="#about" class="text-gray-700 font-medium hover:text-primary-600 py-2">About</a>
+                <a href="#services" class="text-gray-700 font-medium hover:text-primary-600 py-2">Services</a>
+                <a href="#products" class="text-gray-700 font-medium hover:text-primary-600 py-2">Products</a>
+                <a href="#testimonials" class="text-gray-700 font-medium hover:text-primary-600 py-2">Testimonials</a>
+                <a href="#contact" class="text-gray-700 font-medium hover:text-primary-600 py-2">Contact</a>
+                <div class="pt-4 border-t border-gray-200 flex flex-col space-y-3">
+                    <a href="https://mdabdulkaiyum.com" target="_blank"
+                        class="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-full font-medium text-center transition duration-300">Book
+                        Treatment</a>
+                    <a href="https://peacehoney.in" target="_blank"
+                        class="bg-secondary-500 hover:bg-secondary-600 text-white px-4 py-2 rounded-full font-medium text-center transition duration-300">Shop
+                        Products</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-4 py-16">
+            <div class="max-w-3xl mx-auto text-center text-white fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold font-serif mb-6">Natural Healing for Mind, Body & Soul</h1>
+                <p class="text-xl md:text-2xl mb-10">Experience the power of nature's remedies with KDC's holistic
+                    naturopathy treatments and premium wellness products.</p>
+                <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
+                    <a href="https://mdabdulkaiyum.com" target="_blank"
+                        class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-full font-bold text-lg transition duration-300 transform hover:scale-105">Book
+                        Treatment</a>
+                    <a href="https://peacehoney.in" target="_blank"
+                        class="bg-secondary-500 hover:bg-secondary-600 text-white px-8 py-4 rounded-full font-bold text-lg transition duration-300 transform hover:scale-105">Shop
+                        Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-primary-800 font-serif mb-12">About KDC PVT LTD
+            </h2>
+
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 fade-in">
+                    <div class="rounded-2xl overflow-hidden shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                            alt="Naturopathy Treatment" class="w-full h-auto">
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 fade-in">
+                    <h3 class="text-2xl font-bold text-primary-700 mb-6">Holistic Wellness Through Nature's Wisdom</h3>
+                    <p class="text-lg mb-4">At KDC PVT LTD, we believe in the body's innate ability to heal itself when
+                        given the right natural support. Our approach combines ancient healing traditions with modern
+                        scientific understanding to provide comprehensive wellness solutions.</p>
+                    <p class="text-lg mb-4">With over 15 years of experience in naturopathy, our certified practitioners
+                        have helped thousands of individuals restore balance and vitality to their lives through
+                        personalized treatment plans and high-quality natural products.</p>
+                    <p class="text-lg mb-6">We are committed to empowering our clients with knowledge and tools to
+                        maintain optimal health naturally, focusing on prevention and addressing root causes rather than
+                        just symptoms.</p>
+
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">
+                                <i class="fas fa-award text-primary-600"></i>
+                            </div>
+                            <span class="font-medium">Certified Practitioners</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">
+                                <i class="fas fa-leaf text-primary-600"></i>
+                            </div>
+                            <span class="font-medium">100% Natural Products</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center">
+                                <i class="fas fa-user-md text-primary-600"></i>
+                            </div>
+                            <span class="font-medium">Personalized Care</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-primary-800 font-serif mb-4">Our Naturopathy
+                Services</h2>
+            <p class="text-xl text-center text-gray-600 max-w-3xl mx-auto mb-12">Comprehensive natural treatments
+                designed to restore your body's balance and promote lasting wellness.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover fade-in">
+                    <div class="h-48 bg-primary-100 flex items-center justify-center">
+                        <i class="fas fa-spa text-primary-600 text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary-700 mb-3">Detoxification Therapy</h3>
+                        <p class="text-gray-600 mb-4">Gentle cleansing treatments to eliminate toxins and restore your
+                            body's natural balance using herbal formulations and dietary guidance.</p>
+                        <a href="https://mdabdulkaiyum.com" target="_blank"
+                            class="inline-block bg-primary-500 hover:bg-primary-600 text-white px-5 py-2 rounded-full font-medium transition duration-300">Learn
+                            More</a>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover fade-in">
+                    <div class="h-48 bg-primary-100 flex items-center justify-center">
+                        <i class="fas fa-seedling text-primary-600 text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary-700 mb-3">Herbal Medicine</h3>
+                        <p class="text-gray-600 mb-4">Customized herbal remedies tailored to your specific health
+                            concerns, using organically grown medicinal plants.</p>
+                        <a href="https://mdabdulkaiyum.com" target="_blank"
+                            class="inline-block bg-primary-500 hover:bg-primary-600 text-white px-5 py-2 rounded-full font-medium transition duration-300">Learn
+                            More</a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover fade-in">
+                    <div class="h-48 bg-primary-100 flex items-center justify-center">
+                        <i class="fas fa-hand-holding-heart text-primary-600 text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary-700 mb-3">Nutritional Counseling</h3>
+                        <p class="text-gray-600 mb-4">Personalized dietary plans based on your body type, health goals,
+                            and nutritional needs to optimize wellness.</p>
+                        <a href="https://mdabdulkaiyum.com" target="_blank"
+                            class="inline-block bg-primary-500 hover:bg-primary-600 text-white px-5 py-2 rounded-full font-medium transition duration-300">Learn
+                            More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 fade-in">
+                <a href="https://mdabdulkaiyum.com" target="_blank"
+                    class="inline-block bg-secondary-500 hover:bg-secondary-600 text-white px-8 py-3 rounded-full font-bold text-lg transition duration-300">View
+                    All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-primary-800 font-serif mb-4">Natural Wellness
+                Products</h2>
+            <p class="text-xl text-center text-gray-600 max-w-3xl mx-auto mb-12">Premium quality natural products to
+                support your health and wellbeing journey.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover fade-in">
+                    <div class="h-48 bg-amber-50 flex items-center justify-center">
+                        <i class="fas fa-jar text-amber-500 text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary-700 mb-3">Pure Raw Honey</h3>
+                        <p class="text-gray-600 mb-4">Unprocessed, raw honey collected from pristine forest regions,
+                            packed with natural enzymes and antioxidants.</p>
+                        <a href="https://peacehoney.in" target="_blank"
+                            class="inline-block bg-primary-500 hover:bg-primary-600 text-white px-5 py-2 rounded-full font-medium transition duration-300">Shop
+                            Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover fade-in">
+                    <div class="h-48 bg-green-50 flex items-center justify-center">
+                        <i class="fas fa-mortar-pestle text-green-500 text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary-700 mb-3">Herbal Formulations</h3>
+                        <p class="text-gray-600 mb-4">Traditional herbal blends for common health concerns, prepared
+                            following ancient Ayurvedic principles.</p>
+                        <a href="https://peacehoney.in" target="_blank"
+                            class="inline-block bg-primary-500 hover:bg-primary-600 text-white px-5 py-2 rounded-full font-medium transition duration-300">Shop
+                            Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover fade-in">
+                    <div class="h-48 bg-blue-50 flex items-center justify-center">
+                        <i class="fas fa-oil-can text-blue-500 text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary-700 mb-3">Essential Oils</h3>
+                        <p class="text-gray-600 mb-4">Pure, therapeutic-grade essential oils extracted through steam
+                            distillation for aromatherapy and wellness.</p>
+                        <a href="https://peacehoney.in" target="_blank"
+                            class="inline-block bg-primary-500 hover:bg-primary-600 text-white px-5 py-2 rounded-full font-medium transition duration-300">Shop
+                            Now</a>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover fade-in">
+                    <div class="h-48 bg-purple-50 flex items-center justify-center">
+                        <i class="fas fa-cubes text-purple-500 text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary-700 mb-3">Natural Supplements</h3>
+                        <p class="text-gray-600 mb-4">Vitamin and mineral supplements derived from whole food sources
+                            for optimal absorption and effectiveness.</p>
+                        <a href="https://peacehoney.in" target="_blank"
+                            class="inline-block bg-primary-500 hover:bg-primary-600 text-white px-5 py-2 rounded-full font-medium transition duration-300">Shop
+                            Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 fade-in">
+                <a href="https://peacehoney.in" target="_blank"
+                    class="inline-block bg-secondary-500 hover:bg-secondary-600 text-white px-8 py-3 rounded-full font-bold text-lg transition duration-300">Browse
+                    All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-primary-800 font-serif mb-12">What Our Clients
+                Say</h2>
+
+            <div class="max-w-4xl mx-auto">
+                <div id="testimonial-slider" class="bg-white rounded-2xl shadow-lg p-8 md:p-12 fade-in">
+                    <div class="text-center">
+                        <p class="text-xl md:text-2xl italic text-gray-700 mb-6">"After struggling with digestive issues
+                            for years, the naturopathy treatments at KDC completely transformed my health. I feel more
+                            energetic and balanced than ever before."</p>
+                        <div class="flex items-center justify-center space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center">
+                                <i class="fas fa-user text-primary-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-primary-700">Sarah Johnson</p>
+                                <p class="text-gray-600">Wellness Client</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center mt-8 space-x-2">
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-primary-300"></button>
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-primary-500"></button>
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-primary-300"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-bg py-16 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold font-serif mb-6">Begin Your Journey to Natural Wellness Today</h2>
+            <p class="text-xl max-w-3xl mx-auto mb-10">Whether you're seeking personalized treatment or high-quality
+                natural products, KDC PVT LTD is here to support your health journey every step of the way.</p>
+
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
+                <a href="https://mdabdulkaiyum.com" target="_blank"
+                    class="bg-white hover:bg-gray-100 text-primary-600 px-8 py-4 rounded-full font-bold text-lg transition duration-300 transform hover:scale-105">Book
+                    a Consultation</a>
+                <a href="https://peacehoney.in" target="_blank"
+                    class="bg-secondary-500 hover:bg-secondary-600 text-white px-8 py-4 rounded-full font-bold text-lg transition duration-300 transform hover:scale-105">Explore
+                    Our Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-800 text-white pt-12 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center">
+                            <i class="fas fa-leaf text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold font-serif">KDC PVT LTD</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">Your trusted partner in natural wellness, offering holistic treatments
+                        and premium natural products for optimal health.</p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary-500 transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary-500 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary-500 transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary-500 transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-primary-300">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition duration-300">About</a>
+                        </li>
+                        <li><a href="#services"
+                                class="text-gray-300 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#products"
+                                class="text-gray-300 hover:text-white transition duration-300">Products</a></li>
+                        <li><a href="#testimonials"
+                                class="text-gray-300 hover:text-white transition duration-300">Testimonials</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-primary-300">Our Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://mdabdulkaiyum.com" target="_blank"
+                                class="text-gray-300 hover:text-white transition duration-300">Detoxification
+                                Therapy</a></li>
+                        <li><a href="https://mdabdulkaiyum.com" target="_blank"
+                                class="text-gray-300 hover:text-white transition duration-300">Herbal Medicine</a></li>
+                        <li><a href="https://mdabdulkaiyum.com" target="_blank"
+                                class="text-gray-300 hover:text-white transition duration-300">Nutritional
+                                Counseling</a></li>
+                        <li><a href="https://mdabdulkaiyum.com" target="_blank"
+                                class="text-gray-300 hover:text-white transition duration-300">Lifestyle Guidance</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-primary-300">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-primary-400 mt-1"></i>
+                            <span class="text-gray-300">123 Wellness Street, Green City</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fas fa-phone text-primary-400 mt-1"></i>
+                            <span class="text-gray-300">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fas fa-envelope text-primary-400 mt-1"></i>
+                            <span class="text-gray-300">info@kdcwellness.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2023 KDC PVT LTD. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Testimonial Slider
+        const testimonials = [
+            {
+                text: "After struggling with digestive issues for years, the naturopathy treatments at KDC completely transformed my health. I feel more energetic and balanced than ever before.",
+                author: "Sarah Johnson",
+                role: "Wellness Client"
+            },
+            {
+                text: "The natural products from KDC have become an essential part of my daily routine. The quality is exceptional, and I've noticed significant improvements in my overall wellbeing.",
+                author: "Michael Chen",
+                role: "Product Customer"
+            },
+            {
+                text: "I was skeptical about naturopathy at first, but the personalized approach and genuine care from the practitioners at KDC convinced me. My chronic fatigue has improved dramatically.",
+                author: "Emma Rodriguez",
+                role: "Wellness Client"
+            }
+        ];
+
+        let currentTestimonial = 0;
+        const testimonialSlider = document.getElementById('testimonial-slider');
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+
+        function showTestimonial(index) {
+            testimonialSlider.innerHTML = `
+                <div class="text-center">
+                    <p class="text-xl md:text-2xl italic text-gray-700 mb-6">"${testimonials[index].text}"</p>
+                    <div class="flex items-center justify-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center">
+                            <i class="fas fa-user text-primary-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-primary-700">${testimonials[index].author}</p>
+                            <p class="text-gray-600">${testimonials[index].role}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Update active dot
+            testimonialDots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('bg-primary-300');
+                    dot.classList.add('bg-primary-500');
+                } else {
+                    dot.classList.remove('bg-primary-500');
+                    dot.classList.add('bg-primary-300');
+                }
+            });
+        }
+
+        // Add click events to dots
+        testimonialDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentTestimonial = index;
+                showTestimonial(currentTestimonial);
+            });
+        });
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', fadeInOnScroll);
+        // Initial check on page load
+        fadeInOnScroll();
+    </script>
 </body>
 
 </html>
